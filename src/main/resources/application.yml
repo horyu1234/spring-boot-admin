@@ -1,0 +1,33 @@
+server:
+  port: 16090
+  servlet:
+    session:
+      cookie:
+        name: SPRING-BOOT-ADMIN-SESSION
+
+spring:
+  application:
+    name: spring-boot-admin
+  security:
+    user:
+      name: <Admin Username>
+      password: <Admin Password>
+  boot:
+    admin:
+      client:
+        url: http://localhost:${server.port}
+        username: ${spring.security.user.name}
+        password: ${spring.security.user.password}
+        instance:
+          service-url: http://localhost:${server.port}
+          metadata:
+            user.name: ${spring.security.user.name}
+            user.password: ${spring.security.user.password}
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: "*"
