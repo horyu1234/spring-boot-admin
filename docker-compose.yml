@@ -1,0 +1,15 @@
+version: "3.8"
+services:
+  spring-boot-admin:
+    container_name: spring-boot-admin
+    image: spring-boot-admin:1.0.0
+    ports:
+      - "10001:8080"
+    networks:
+      - default
+    volumes:
+      - /home/horyu/spring-boot-admin/config:/root/config
+    restart: always
+networks:
+  default:
+    driver: bridge
