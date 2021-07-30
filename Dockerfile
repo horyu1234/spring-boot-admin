@@ -5,6 +5,9 @@ RUN apk add tzdata
 RUN cp /usr/share/zoneinfo/Asia/Seoul /etc/localtime
 RUN echo "Asia/Seoul" > /etc/timezone
 
+# Install curl for HealthCheck
+RUN apk --no-cache add curl
+
 # Extract Server Jar
 ARG JAR_FILE=build/libs/*.jar
 COPY ${JAR_FILE} app.jar
